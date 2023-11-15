@@ -1,0 +1,111 @@
+---
+title: "MU11_In_Class"
+author: "Nathan Lyell"
+date: "2023-11-15"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+library(dplyr)
+library(tidyverse)
+```
+
+```{r}
+scores <- 
+  tibble(
+    name = c("mike", "carol", "greg", "marcia", "peter", "jan", "bobby", "cindy", "alice"),
+    school = c("south", "south", "south", "south", "north", "north", "north", "south", "south"),
+    teacher = c("johnson", "johnson", "johnson", "johnson",  "smith", "smith", "smith", "perry", "perry"),
+    sex = c("male", "female", "male", "female", "male", "female", "male", "female", "female"),
+    math_score = c(4, 3, 2, 4, 3, 4, 5, 4, 5),
+    reading_score = c(1, 5, 2, 4, 5, 4, 1, 5, 4)
+)
+```
+
+```{r}
+scores
+```
+
+```{r}
+head(scores, 3)
+head3 <- head(scores, 3)
+```
+```{r}
+scores %>%
+  slice(1:3)
+```
+
+```{r}
+head3 <- scores %>%
+  slice(1:3)
+```
+
+```{r}
+scores %>%
+  arrange(desc(math_score))
+```
+
+```{r}
+scores %>%
+  arrange(sex)
+```
+
+```{r}
+scores %>%
+  arrange(school, sex,teacher, math_score, reading_score)
+```
+
+```{r}
+scores %>%
+  select(name, math_score, reading_score)
+```
+```{r}
+scores %>%
+  select(-sex)
+```
+```{r}
+scores %>%
+  select(-math_score, -reading_score)
+```
+```{r}
+scores %>%
+  select(sex, everything())
+```
+
+```{r}
+scores %>%
+  filter(sex == 'male' & school == 'south')
+```
+
+```{r}
+scores %>%
+  filter(math_score > mean(math_score))
+```
+
+```{r}
+scores %>%
+  filter(math_score >= 4 & reading_score >= 3 )
+```
+
+```{r}
+scores %>%
+  filter(math_score <= 3 | reading_score <= 3 )
+```
+```{r}
+scores %>%
+  group_by(teacher) %>%
+  filter(max(math_score) == 5)
+```
+
+
+
+
+
+
+

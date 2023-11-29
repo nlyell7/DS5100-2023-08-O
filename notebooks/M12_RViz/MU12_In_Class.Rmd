@@ -1,0 +1,87 @@
+---
+title: "MU12_In_Class"
+author: "Nathan Lyell"
+date: "2023-11-29"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+```{r}
+library(vctrs)
+library(tidyverse)
+```
+
+```{r}
+head(mpg)
+```
+```{r}
+mpg %>% ggplot()
+```
+
+
+```{r}
+mpg %>% 
+  ggplot(aes(x = cyl, y= hwy)) + 
+    geom_point()
+```
+
+
+```{r}
+mpg %>% 
+  ggplot(aes(x = drv, y=class)) + 
+    geom_point()
+```
+
+
+```{r}
+x <- seq(-6*pi, 6*pi, length.out = 100)
+dat <- data.frame(x = x, y = sin(x)/x)
+head(dat)
+```
+
+```{r}
+ggplot(dat, aes(x=x, y=y)) + geom_line()
+```
+
+```{r}
+ggplot(cars, aes(x=dist,y=speed)) + geom_point()
+```
+```{r}
+ggplot(cars, aes(x=dist,y=speed,color = dist>80)) + geom_point()
+```
+
+```{r}
+ggplot(cars, aes(x=dist,y=speed,color = dist>80)) + 
+  geom_point() + 
+  geom_smooth(method = lm)
+```
+
+```{r}
+ggplot(cars, aes(x=dist)) + geom_histogram()
+```
+
+```{r}
+ggplot(mpg,aes(x=hwy,y=cty)) + 
+  geom_point() +
+  facet_grid(drv ~ cyl)
+```
+
+
+
+```{r}
+
+```
+
+
+```{r}
+
+```
+
+```{r}
+
+```
+
